@@ -1,0 +1,52 @@
+input PersonCreateInput {
+  id: String
+  birthDateTime: String
+  bloodTypeCode: String
+  deathIndicator: Boolean
+  ethnicityCode: String
+  genderCode: String
+  maritalStatusCode: String
+  missingDateTime: String
+  missingIndicator: Boolean
+  partyKey: String
+  primaryLanguageLanguageKey: String
+  txGlobalGenderCode: String
+  txPrimaryKey: String
+  txMetaSourceKey: String
+  txMetaStartEventTime: String
+  txMetaLoadTime: String
+  txMetaSource: String
+  txMetaCorrection: String
+  txMetaChange: String
+  txMetaAccessFilter: Int
+}
+type Person {
+  id: String!
+  birthDateTime: String
+  bloodTypeCode: String
+  deathIndicator: Boolean
+  ethnicityCode: String
+  genderCode: String
+  maritalStatusCode: String
+  missingDateTime: String
+  missingIndicator: Boolean
+  partyKey: String
+  primaryLanguageLanguageKey: String
+  txGlobalGenderCode: String
+  txPrimaryKey: String
+  txMetaSourceKey: String
+  txMetaStartEventTime: String
+  txMetaLoadTime: String
+  txMetaSource: String
+  txMetaCorrection: String
+  txMetaChange: String
+  txMetaAccessFilter: Int
+}
+
+type Query {
+   hello : String
+}
+
+type Mutation {
+  createOnePerson(data: PersonCreateInput!): Person!
+}

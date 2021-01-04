@@ -1,0 +1,16 @@
+{
+  "namespace": "com.graphql.graphqltools1.models",
+  "type": "record",
+  "name": "Comment1",
+  "fields": [
+    {
+      "name": "description",
+      "type": "string",
+      "avro.java.string": "String"
+    },
+    {
+      "name": "id",
+      "type": "long"
+    }
+  ]
+}

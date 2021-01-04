@@ -1,5 +1,30 @@
 package com.graphql.graphqltools1;
 
+public class Post {
+
+    private Long id;
+    private String text;
+
+    Post(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getText() {
+      return text;
+    }
+
+    public void setText(String text) {
+      this.text = text;
+    }
+}
+
+
+package com.graphql.graphqltools1;
+
 class Comment {
     public Long getId() {
         return id;

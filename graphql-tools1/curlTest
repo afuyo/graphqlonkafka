@@ -1,0 +1,2 @@
+curl -X POST -F 'message=test' http://localhost:9001/kafka/publish
+curl -X POST -d 'name=vik&age=33' http://localhost:9001/kafka/publish

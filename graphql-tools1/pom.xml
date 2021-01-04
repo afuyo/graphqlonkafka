@@ -13,10 +13,40 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>graphql-tools1</name>
 	<description>Demo project for Spring Boot</description>
-
-	<properties>
+	<repositories>
+		<repository>
+			<id>snapshots</id>
+			<name>snapshots</name>
+			<url>https://dkdc2supdevw002.prd1.prdroot.net:9443/nexus/content/repositories/snapshots</url>
+		</repository>
+		<repository>
+			<id>confluent</id>
+			<url>http://packages.confluent.io/maven/</url>
+		</repository>
+		<repository>
+			<id>maven-releases</id>
+			<name>maven-releases</name>
+			<url>
+				https://dkdc2supdevw002.prd1.prdroot.net:9443/nexus/content/repositories/releases/
+			</url>
+		</repository>
+		<repository>
+			<id>maven-snapshots</id>
+			<name>maven-snapshots</name>
+			<url>
+				https://dkdc2supdevw002.prd1.prdroot.net:9443/nexus/content/repositories/snapshots
+			</url>
+		</repository>
+		<repository>
+			<id>bintray-americanexpress-maven</id>
+			<url>
+				https://dl.bintray.com/americanexpress/maven
+			</url>
+		</repository>
+	</repositories>
+	<!--properties>
 		<java.version>11</java.version>
-	</properties>
+	</properties-->
 
 	<dependencies>
 		<dependency>
@@ -47,6 +77,12 @@
 		<dependency>
 			<groupId>com.graphql-java-kickstart</groupId>
 			<artifactId>graphql-spring-boot-starter</artifactId>
+			<version>8.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.graphql-java-kickstart/playground-spring-boot-starter -->
+		<dependency>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>playground-spring-boot-starter</artifactId>
 			<version>8.0.0</version>
 		</dependency>
 
@@ -81,6 +117,39 @@
 			<version>8.0.0</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.confluent/kafka-avro-serializer -->
+		<dependency>
+			<groupId>io.confluent</groupId>
+			<artifactId>kafka-avro-serializer</artifactId>
+			<version>5.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.avro</groupId>
+			<artifactId>avro</artifactId>   <!--2-->
+			<version>1.9.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava -->
+		<dependency>
+			<groupId>io.reactivex.rxjava2</groupId>
+			<artifactId>rxjava</artifactId>
+			<version>2.2.20</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.projectreactor/reactor-core -->
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${org.projectlombok.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -89,7 +158,54 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.avro</groupId>
+				<artifactId>avro-maven-plugin</artifactId>
+				<version>1.10.0</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>schema</goal>
+						</goals>
+						<configuration>
+							<sourceDirectory>src/main/avro</sourceDirectory> <!--5-->
+							<outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+							<!--outputDirectory>src/main/java/</outputDirectory-->
+							<stringType>String</stringType>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>1.4.1.Final</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.16</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
+	<properties>
+		<org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+		<!--springframework.version>4.3.4.RELEASE</springframework.version-->
+		<!--maven.compiler.source>1.8</maven.compiler.source-->
+		<!--maven.compiler.target>1.8</maven.compiler.target-->
+		<org.projectlombok.version>1.18.16</org.projectlombok.version>
+		<assertj.version>3.16.1</assertj.version>
+	</properties>
 </project>

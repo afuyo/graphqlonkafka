@@ -6,8 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 class Query implements GraphQLQueryResolver {
 
-   Post getPost(Long id) {
-        return new Post(id);
+ /*   com.graphql.graphqltools1.models.Post getPost(Long id) {
+        return new com.graphql.graphqltools1.models.Post("defalut",id);
+    }
+*/
+
+    public String hello() {
+        return "Hello world!";
     }
 
 }

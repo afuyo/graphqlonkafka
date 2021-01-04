@@ -1,0 +1,42 @@
+[
+{
+  "namespace": "com.graphql.graphqltools1.models",
+  "type": "record",
+  "name": "Comment2",
+  "fields": [
+    {
+      "name": "description",
+      "type": "string",
+      "avro.java.string": "String"
+    },
+    {
+      "name": "id",
+      "type": "long"
+    }
+  ]
+},
+{
+  "namespace": "com.graphql.graphqltools1.models",
+  "type": "record",
+  "name": "Post2",
+  "fields": [
+    {
+      "name": "text",
+      "type": "string",
+      "avro.java.string": "String"
+    },
+    {
+      "name": "id",
+      "type": "long"
+    },
+     {
+         "name": "comments",
+            "type": {
+                    "type": "array",
+                    "items": "com.graphql.graphqltools1.models.Comment2"
+        }
+       }
+
+  ]
+}
+]

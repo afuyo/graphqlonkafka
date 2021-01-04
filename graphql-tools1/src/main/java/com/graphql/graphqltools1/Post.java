@@ -14,10 +14,10 @@ public class Post {
     }
 
     public String getText() {
-      return text;
+        return text;
     }
 
     public void setText(String text) {
-      this.text = text;
+        this.text = text;
     }
 }

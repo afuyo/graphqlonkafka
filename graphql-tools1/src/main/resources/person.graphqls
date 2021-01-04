@@ -1,0 +1,68 @@
+schema {
+  query: Query
+  subscription : Subscription
+}
+type Query {
+  # post(id: ID!): Post
+  hello : String
+}
+type Mutation {
+  createPost(text:String):Post
+  #createPost1(text:String):Post
+  createUser(name:String): User
+  createNestedPost(input:CreatePostInput):Post
+  createNestedPost2(input:CreatePostInput2):Post
+  createNestedPost3(input:CreatePostInput3):Post
+}
+type Post {
+  id: ID!
+  text: String
+  comments: [Comment!]!
+}
+
+type Comment {
+  id: ID!
+  description: String!
+}
+type User {
+  name: String
+  age: Int
+}
+type Subscription {
+  userSub(name:String) : User!
+
+}
+input CreatePostInput{
+  id: ID!
+  text: String
+  comments: CreateCommentInput!
+
+}
+input CreatePostInput2{
+  id: ID!
+  text: String
+  comments: [CreateCommentInput2]!
+
+}
+input CreateCommentInput2 {
+  id: ID!
+  description: String!
+}
+
+input CreatePostInput3{
+  ident: ID!
+  svensktext: String
+
+}
+
+input CreateCommentInput {
+  id: ID!
+  description: String!
+}
+
+
+
+
+
+
+

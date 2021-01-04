@@ -9,7 +9,7 @@ import java.util.List;
 @Component
 class PostResolver implements GraphQLResolver<Post> {
 
-    public List<Comment> getComments(Post post) {
+   public List<Comment> getComments(Post post) {
         return Collections.emptyList();
     }
 
